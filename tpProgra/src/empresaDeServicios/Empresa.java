@@ -229,22 +229,26 @@ public class Empresa {
 	   }
 	   /**
 	   * Debe cambiar el especialista responsable del servicio.
-	   * Si código de Servicio o el nroEspecialista no están registrados en el sistema
+	   * Si código de Servicio o el nroEspecialista no están registrados en el sistema				????????????????????????????????????????????????????????''
 	   * se debe generar una excepción.
 	   * Si el especialista no se especializa en este tipo de servicio se debe generar
 	   * una excepción.
 	   */
-	   public void cambiarResponsable(String tipoDeServicio, int nroEspecialista) {
+	   public void cambiarResponsable(String codigoServicio, int nroEspecialista) {
 		   for (Servicio servicio : servicios){
-				   if (!servicio.getTipoDeServicio().equals(tipoDeServicio)) {
-					   throw new RuntimeException("El tipo de servicio no es valido");
+			   if (!servicio.getCodServicio().equals(codigoServicio)) {
+				   throw new RuntimeException("El codigo del servicio no es valido");
+			   }
+			   for (Especialista especialista : especialistas.values()) {
+				   int nroDeEspecialista = especialista.consultarCodigoEspecialista();
+				   if (nroDeEspecialista != nroEspecialista) {
+					   throw new RuntimeException("El nro de especialista no es valido");
 				   }
-				   for (Especialista especialista : especialistas.values()) {
-					   int nroDeEspecialista = especialista.consultarCodigoEspecialista();
-					   if (nroDeEspecialista != nroEspecialista) {
-						   throw new RuntimeException("El nro de especialista no es valido");
-					   }
+				   String servicioDeEspecialista = especialista.consultarTipoDeServicio();
+				   if (!servicioDeEspecialista.equals(especialista.consultarTipoDeServicio())) {
+					   throw new RuntimeException("El especialista no se especializa en el servicio requerido");
 				   }
+			   }
 		   }
 	   }
 	   
