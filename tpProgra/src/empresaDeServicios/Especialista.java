@@ -3,35 +3,40 @@ package empresaDeServicios;
 import java.util.List;
 
 public class Especialista {
-	private String nombre;
-	private String servicio;
-	private int codigo;
-	private int nroEspecialista;
-	private String tipo;
+	private String nombreEspecialista;
+	private int codigoEspecialista;
+	private int telefono;
+	private String tipoDeServicio;
 	private List<Servicio> serviciosRealizados;
 	
-    public Especialista(String nombre, String servicio, int codigo, int nroEspecialista) {
-        this.nombre = nombre;
-        this.servicio = servicio;
-        this.codigo = codigo;
-        this.nroEspecialista = nroEspecialista;       
+    public Especialista(String nombreEspecialista, int codigoEspecialista, int telefono, String tipoDeServicio) {
+        this.nombreEspecialista = nombreEspecialista;
+        this.codigoEspecialista = codigoEspecialista;
+        this.telefono = telefono;  
+        this.tipoDeServicio = tipoDeServicio;
     	}
-        
-    public String consultarNombre() {
-    	return nombre;
+    
+//_________________________________________________________________________________________________________________________________________________________________________	
+
+//CONSULTAR
+    
+    public String consultarNombreEspecialista() {
+    	return nombreEspecialista;
     }
-    public String consultarTipoServicio() {
-    	return servicio;
+    public int consultarCodigoEspecialista() {
+    	return codigoEspecialista;
     }
-    public int consultarCodigo() {
-    	return codigo;
+    public int consultarTelefono() {
+    	return telefono;
     }
-    public int nroEspecialista() {
-    	return nroEspecialista;
+    public String consultarTipoDeServicio() {
+    	return tipoDeServicio;
     }
-    public String consultarTipo() {
-    	return tipo;
-    }
+     
+    
+    
+    
+    
     
     public void agregarServicioRealizado(Servicio servicio) {
         serviciosRealizados.add(servicio);

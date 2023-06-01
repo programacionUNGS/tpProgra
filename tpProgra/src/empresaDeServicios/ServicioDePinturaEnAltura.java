@@ -5,15 +5,55 @@ public class ServicioDePinturaEnAltura extends ServicioDePintura{
 	private double valorAndamios;
 	private double valorSeguro;
 	
-    public ServicioDePinturaEnAltura(String tipoDeServicio, String domicilioDeServicio, int superficieApintar,
-            double costoPorMetroCuadrado,double valorSeguro,double valorAndamios) {
-        super(tipoDeServicio, domicilioDeServicio, superficieApintar, costoPorMetroCuadrado);
+    public ServicioDePinturaEnAltura(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int metrosCuadrados, double precioPorMetroCuadrado, int cantPisos,double valorSeguro,double valorAndamios) {
+        
+    	super(tipoDeServicio, domicilioDeServicio, especialista, metrosCuadrados, precioPorMetroCuadrado);
 
         this.valorSeguro = valorSeguro;
         this.valorAndamios = valorAndamios;
-
+        this.cantPisos = cantPisos;
     }
+    
+    
+	public int getCantPisos() {
+		return cantPisos;
+	}
+
+	public void setCantPisos(int cantPisos) {
+		this.cantPisos = cantPisos;
+	}
+
+	public double getValorAndamios() {
+		return valorAndamios;
+	}
+
+	public void setValorAndamios(double valorAndamios) {
+		this.valorAndamios = valorAndamios;
+	}
+
+	public double getValorSeguro() {
+		return valorSeguro;
+	}
+
+	public void setValorSeguro(double valorSeguro) {
+		this.valorSeguro = valorSeguro;
+	}
 	
-	public double calcularPrecioDeServicio(double valorSeguro, double valorAndamios, int cantPisos);
+
+//_________________________________________________________________________________________________________________________________________________________________________	
+
+	@Override
+	public double calcularPrecioDeServicio(int cantPisos, double precioPorMetroCuadrado, int metrosCuadrados, double valorAndamios, double valorSeguro) {
+		if (cantPisos > 1) {
+			return ((precioPorMetroCuadrado * metrosCuadrados) + valorAndamios + valorSeguro);
+			
+		}
+	}
+		
+	
+	
+	
+	
+
 	
 }

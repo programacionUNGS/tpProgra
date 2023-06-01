@@ -1,15 +1,19 @@
 package empresaDeServicios;
 
 public class ServicioDeGasInstalacion extends ServicioDeGas{
-	private int descuento;
 
-    public servicioDeGasInstalacion(String tipoDeServicio, String domicilioDeServicio,double cantidadDeArfactos, int descuento) {
-    	super(tipoDeServicio,domicilioDeServicio,cantidadDeArfactos);
+    public ServicioDeGasInstalacion(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, double costoServicio, int cantDeArtefactos, double precioPorArtefacto) {
+    	
+    	super(tipoDeServicio, domicilioDeServicio, especialista, costoServicio, cantDeArtefactos, precioPorArtefacto);
         
-    	this.descuento = descuento;
-
-        // TODO Auto-generated constructor stub
     }
 
+//_________________________________________________________________________________________________________________________________________________________________________	
 
+  @Override  
+  public double calcularPrecioDeServicio(int cantDeArtefactos, double precioPorArtefacto) {
+	  return precioPorArtefacto * cantDeArtefactos;
+  }
+
+    
 }

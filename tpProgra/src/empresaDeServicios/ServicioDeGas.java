@@ -1,22 +1,35 @@
 package empresaDeServicios;
 
 public class ServicioDeGas extends Servicio {
-    private double cantidadDeArtefactos;
+    private int cantDeArtefactos;
+    private double precioPorArtefacto;
+    
+    public ServicioDeGas(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, double costoServicio, int cantDeArtefactos, double precioPorArtefacto) {
+        super(tipoDeServicio, domicilioDeServicio, especialista, costoServicio);
 
-    public ServicioDeGas(String tipoDeServicio, String domicilioDeServicio) {
-        super(tipoDeServicio, domicilioDeServicio);
+        this.cantDeArtefactos = cantDeArtefactos;
+        this.precioPorArtefacto = precioPorArtefacto;
 
-        this.cantidadDeArtefactos = cantidadDeArtefactos;
-
-        // TODO Auto-generated constructor stub
     }
+        
+    public int getCantDeArtefactos() {
+		return cantDeArtefactos;
+	}
 
-    @Override
-    public int calcularFacturacionDeServicio() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	public void setCantDeArtefactos(int cantDeArtefactos) {
+		this.cantDeArtefactos = cantDeArtefactos;
+	}
+	
+	 public double getPrecioPorArtefacto() {
+			return precioPorArtefacto;
+		}
 
+		public void setPrecioPorArtefacto(int precioPorArtefacto) {
+			this.precioPorArtefacto = precioPorArtefacto;
+		}
 
+//_________________________________________________________________________________________________________________________________________________________________________	
 
+	
+	
 }
