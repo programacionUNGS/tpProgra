@@ -4,11 +4,12 @@ public class Servicio {
 	private String tipoDeServicio;
 	private String domicilioDeServicio;
 	private Especialista especialista;
-	private double costoServicio;
-	private double costoMateriales;	
+	private int costoServicio;
+	private int costoMateriales;	
 	private int cantHoras;
+	private String codServicio;
 	
-	public Servicio(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, double costoServicio) {
+	public Servicio(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int costoServicio, int costoMateriales, int cantHoras, String codServicio) {
         this.tipoDeServicio = tipoDeServicio;
         this.domicilioDeServicio = domicilioDeServicio;
         this.especialista = especialista;
@@ -43,15 +44,15 @@ public class Servicio {
 		return costoServicio;
 	}
 
-	public void setCostoServicio(double costoServicio) {
+	public void setCostoServicio(int costoServicio) {
 		this.costoServicio = costoServicio;
 	}
 	
-	public double getCostoMateriales() {
+	public int getCostoMateriales() {
 		return costoMateriales;
 	}
 	
-	public void setCostoMateriales(double costoMateriales) {
+	public void setCostoMateriales(int costoMateriales) {
 		this.costoMateriales = costoMateriales;
 	}
 	
@@ -61,6 +62,13 @@ public class Servicio {
 	
 	public void setCantHoras(int cantHoras) {
 		this.cantHoras = cantHoras;
+	}
+	public String getCodServicio() {
+		return codServicio;
+	}
+	
+	public void setCodServicio(String codServicio) {
+		this.codServicio = codServicio;
 	}
 
 //_________________________________________________________________________________________________________________________________________________________________________	
@@ -80,17 +88,12 @@ public class Servicio {
 	}
 	
 	
-	
-	
-	public double finalizarServicio(double costoMateriales, int cantHoras) { //ESTO TMBIEN ESTA EN EMPRESA
+	public double finalizarServicio(int costoMateriales, int cantHoras) {
 		this.costoMateriales = costoMateriales;
 		this.cantHoras = cantHoras;
-		return costoMateriales + cantHoras;
+		return costoMateriales * cantHoras;
 	}
-		
-	public void cambiarResponsable(Especialista especialista) {
-		this.especialista = especialista;
-	}
+	
 	
 	public double calcularPrecioDeServicio() { 
 		return (costoServicio * cantHoras) + costoMateriales;

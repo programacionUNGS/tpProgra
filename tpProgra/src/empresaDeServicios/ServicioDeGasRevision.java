@@ -1,11 +1,11 @@
 package empresaDeServicios;
 
 public class ServicioDeGasRevision extends ServicioDeGas {
-    private double descuento;
+    private int descuento;
     
-    public ServicioDeGasRevision(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, double costoServicio, int cantDeArfactos, double descuento) {
-
-        super(tipoDeServicio, domicilioDeServicio, especialista, costoServicio, cantDeArfactos);
+    public ServicioDeGasRevision(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int costoServicio, int costoMateriales, int cantHoras, String codServicio, int cantDeArfactos, int precioPorArtefacto, int descuento) {
+    	
+        super(tipoDeServicio, domicilioDeServicio, especialista, costoServicio, costoMateriales, cantHoras, codServicio, cantDeArfactos, precioPorArtefacto);
         
         this.descuento = descuento;
     }
@@ -14,18 +14,16 @@ public class ServicioDeGasRevision extends ServicioDeGas {
 		return descuento;
 	}
 
-	public void setDescuento(double descuento) {
+	public void setDescuento(int descuento) {
 		this.descuento = descuento;
 	}
 	
 //_________________________________________________________________________________________________________________________________________________________________________	
 
 	@Override
-	public double calcularPrecioDeServicio(int cantDeArtefactos, double costoDeServicio, double decuento) {
+	public double calcularPrecioDeServicio(int cantDeArtefactos, int precioPorArtefacto, double decuento) {
 		if (cantDeArtefactos >= 5) {
-			return costoDeServicio - descuento;
-		}else {
-			return costoDeServicio;
+			return (precioPorArtefacto * cantDeArtefactos) - descuento;
 		}
 	}
 

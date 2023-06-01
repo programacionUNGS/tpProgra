@@ -2,10 +2,10 @@ package empresaDeServicios;
 
 public class ServicioDeGas extends Servicio {
     private int cantDeArtefactos;
-    private double precioPorArtefacto;
+    private int precioPorArtefacto;
     
-    public ServicioDeGas(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, double costoServicio, int cantDeArtefactos, double precioPorArtefacto) {
-        super(tipoDeServicio, domicilioDeServicio, especialista, costoServicio);
+    public ServicioDeGas(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int costoServicio, int costoMateriales, int cantHoras, String codServicio, int cantDeArtefactos, int precioPorArtefacto) {
+        super(tipoDeServicio, domicilioDeServicio, especialista, costoServicio, costoMateriales, cantHoras, codServicio);
 
         this.cantDeArtefactos = cantDeArtefactos;
         this.precioPorArtefacto = precioPorArtefacto;

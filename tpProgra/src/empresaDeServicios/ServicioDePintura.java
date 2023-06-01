@@ -5,6 +5,7 @@ public class ServicioDePintura extends Servicio {
 	private double precioPorMetroCuadrado;
 	
 	public ServicioDePintura(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int metrosCuadrados, double precioPorMetroCuadrado) {
+		
 		super(tipoDeServicio, domicilioDeServicio, especialista, (metrosCuadrados * precioPorMetroCuadrado));
 
 		this.metrosCuadrados = metrosCuadrados;

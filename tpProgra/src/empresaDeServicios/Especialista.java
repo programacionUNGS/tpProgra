@@ -3,13 +3,13 @@ package empresaDeServicios;
 import java.util.List;
 
 public class Especialista {
-	private String nombreEspecialista;
 	private int codigoEspecialista;
-	private int telefono;
+	private String nombreEspecialista;
+	private String telefono;
 	private String tipoDeServicio;
 	private List<Servicio> serviciosRealizados;
 	
-    public Especialista(String nombreEspecialista, int codigoEspecialista, int telefono, String tipoDeServicio) {
+    public Especialista(int codigoEspecialista, String nombreEspecialista, String telefono, String tipoDeServicio) {
         this.nombreEspecialista = nombreEspecialista;
         this.codigoEspecialista = codigoEspecialista;
         this.telefono = telefono;  
@@ -26,16 +26,13 @@ public class Especialista {
     public int consultarCodigoEspecialista() {
     	return codigoEspecialista;
     }
-    public int consultarTelefono() {
+    public String consultarTelefono() {
     	return telefono;
     }
     public String consultarTipoDeServicio() {
     	return tipoDeServicio;
     }
      
-    
-    
-    
     
     
     public void agregarServicioRealizado(Servicio servicio) {

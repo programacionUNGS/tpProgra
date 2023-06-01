@@ -17,7 +17,7 @@ public class EmpresaDeServiciosTest {
 	static final String SERVICIO_ELECTRICIDAD = "Electricidad";
 	static final String SERVICIO_GASISTA_INSTALACION = "GasistaInstalacion";
 	static final String SERVICIO_GASISTA_REVISION = "GasistaRevision";
-	EmpresaDeServicios empresa;
+	Empresa empresa;
 	int dniClienteRegistrado, dniClienteNuevo;
 	int nroEspecialistaElectrisista, nroEspecialistaPintorAltura1, nroEspecialistaPintorAltura2,
 			nroEspecialistaGasistaRevision, nroEspecialistaGasistaInstalacion, nroEspecialistaPintor;
@@ -29,7 +29,7 @@ public class EmpresaDeServiciosTest {
 	@Before
 	public void setUp() throws Exception {
 
-		empresa = new EmpresaDeServicios();
+		empresa = new Empresa();
 		empresa.registrarEspecialista(1001, "Electricista1", "1144556677", SERVICIO_ELECTRICIDAD);
 		empresa.registrarEspecialista(20, "GasistaInstalacion", "1144556688", SERVICIO_GASISTA_INSTALACION);
 		empresa.registrarEspecialista(33, "PintorAltura1", "1144556699", SERVICIO_PINTURA_EN_ALTURA);

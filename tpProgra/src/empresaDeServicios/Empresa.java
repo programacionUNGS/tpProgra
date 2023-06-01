@@ -7,38 +7,36 @@ import java.util.HashMap;
 import java.util.Set;
 
 public class Empresa {
-	private String nombre;
 	private double facturacion;
 	private Map<Integer, Especialista> especialistas;
 	private List<Cliente> clientes;
 	private ArrayList<Servicio> servicios;
 	
-		public Empresa(String nombre) {
+		public Empresa() {
 			clientes = new ArrayList<>();
 			servicios = new ArrayList<>();
 			facturacion = 0.0;
-			this.nombre	= nombre;
 			}
 //REGISTRAR
 		
-	   public void registrarNuevoCliente(String nombre, int dni, String contacto) {
-	        Cliente cliente = new Cliente(nombre, dni, contacto);
+	   public void registrarCliente(int dni, String nombre, String contacto) {
+	        Cliente cliente = new Cliente(dni, nombre, contacto);
 	        clientes.add(cliente);
 	    }
 	   
-	   public void registrarNuevoServicio(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, double costoServicio) {
+	   public void registrarServicio(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, double costoServicio) {
 		   Servicio servicio = new Servicio(tipoDeServicio, domicilioDeServicio, especialista, costoServicio);
 		   servicios.add(servicio);
 	   }
 	   
-	   public void registrarNuevoEspecialista(String nombreEspecialista, int codigoEspecialista, int telefono, String servicioEspecializado) { 
-	        Especialista especialista = new Especialista(nombreEspecialista, codigoEspecialista, telefono, servicioEspecializado);
+	   public void registrarEspecialista(int codigoEspecialista, String nombreEspecialista, String telefono, String servicioEspecializado) { 
+	        Especialista especialista = new Especialista(codigoEspecialista, nombreEspecialista, telefono, servicioEspecializado);
 	        especialistas.put(codigoEspecialista, especialista);
 	    }
 	   
-//EXCEPCIONES DE LOS SOLICITAR DE CADA SERVICIO (ESTOY X ARMAR EL CODIGO QUE FALTA)
+//EXCEPCIONES DE LOS SOLICITAR DE CADA SERVICIO
 	   
-	   public int solicitarServicioDeElectricidad(int dni, int codigoEspecialista, String domicilioDeServicio, double valorHora, int horasTrabajo) {
+	   public int solicitarServicioElectricidad(int dni, int codigoEspecialista, String domicilioDeServicio, double valorHora, int horasTrabajo) {
 		   if (!clientes.equals(dni)){
 			   throw new RuntimeException("El dni ingresado no corresponde a un cliente registrado");
 		   }
@@ -60,7 +58,7 @@ public class Empresa {
 	   }
 	   
 	   
-	   public int solicitarServicioDePintura(int dni, int codigoEspecialista, String domicilioDeServicio, int metrosCuadrados, double precioPorMetroCuadrado) {
+	   public int solicitarServicioPintura(int dni, int codigoEspecialista, String domicilioDeServicio, int metrosCuadrados, double precioPorMetroCuadrado) {
 		   if (!clientes.equals(dni)){
 			   throw new RuntimeException("El dni ingresado no corresponde a un cliente registrado");
 		   }
@@ -82,7 +80,7 @@ public class Empresa {
 	   }
 	   
 	   
-	   public int solicitarServicioDePinturaEnAltura(int dni, int codigoEspecialista, String domicilioDeServicio, int metrosCuadrados, double precioPorMetroCuadrado, int cantPisos, double valorAndamios, double valorSeguro) {
+	   public int solicitarServicioPintura(int dni, int codigoEspecialista, String domicilioDeServicio, int metrosCuadrados, double precioPorMetroCuadrado, int cantPisos, double valorAndamios, double valorSeguro) {
 		   if (!clientes.equals(dni)){
 			   throw new RuntimeException("El dni ingresado no corresponde a un cliente registrado");
 		   }
@@ -113,7 +111,7 @@ public class Empresa {
 	   }
 	   
 	   
-	   public int solicitarServicioDeGasInstalacion(int dni, int codigoEspecialista, String domicilioDeServicio, int cantDeArtefactos, double precioPorArtefacto) {
+	   public int solicitarServicioGasistaInstalacion(int dni, int codigoEspecialista, String domicilioDeServicio, int cantDeArtefactos, int precioPorArtefacto) {
 		   if (!clientes.equals(dni)){
 			   throw new RuntimeException("El dni ingresado no corresponde a un cliente registrado");
 		   }
@@ -135,7 +133,7 @@ public class Empresa {
 	   }
 	   
 	   
-	   public int solicitarServicioDeGasRevision(int dni, int codigoEspecialista, String domicilioDeServicio, int cantDeArtefactos, double precioPorArtefacto) {
+	   public int solicitarServicioGasistaRevision(int dni, int codigoEspecialista, String domicilioDeServicio, int cantDeArtefactos, int precioPorArtefacto) {
 		   if (!clientes.equals(dni)){
 			   throw new RuntimeException("El dni ingresado no corresponde a un cliente registrado");
 		   }
@@ -170,10 +168,11 @@ public class Empresa {
 	   *
 	   * Si el código de servicio no está en el sistema o el mismo ya fué finalizado,
 	   * se debe generar una excepción.
-	   *
-	   * Se debe realizar esta operación en O(1).
+	   
 	   */
-	   public double finalizarServicio(int codServicio, double costoMateriales);
+	   public double finalizarServicio(int costoMateriales, int costoServicio) {
+		   
+	   }
 	  
 	   
 	   
@@ -193,20 +192,23 @@ public class Empresa {
 	   
 	   
 	   /**
-	   * Devuelve la suma del precio facturado de todos los servicios finalizados que                ?????FALTA ESTO
+	   * Devuelve la suma del precio facturado de todos los servicios finalizados que                ?????????????????????????????????????????????
 	   * son del tipo pasado por parámetro.
 	   * Si el tipo de servicio es invalido, debe generar una excepción. /
 	   */
 	   public double facturacionTotalPorTipo(String tipoServicio) {
 	   		double precioFacturadoDeUnTipoDeServicio = 0;
 	   		for (Servicio servicio : servicios) {
-	   			if (esInvalido(tipoServicio)== true) {
+	   			if (esInvalido(tipoServicio) == true) {
 	   				throw new RuntimeException("El tipo de servicio es invalido");
-	   			}else if (){
-	   				
 	   			}
-	   		}	
+	   			if (servicio.getTipoDeServicio().equals(tipoServicio)){
+	   				precioFacturadoDeUnTipoDeServicio += servicio.calcularPrecioDeServicio();
+	   			}
+	   		}
+	   		return precioFacturadoDeUnTipoDeServicio;
 	   }
+	   
 	   	public boolean esInvalido (String tipoDeservicio) {
 	   		for(Servicio servicio : servicios) {
 	   			if (servicio.getTipoDeServicio().equals(tipoDeservicio)) {
@@ -215,6 +217,7 @@ public class Empresa {
 	   		}
 	   		return true;
 	   	}
+	   	
 	   
 	   
 	   /**
@@ -230,12 +233,19 @@ public class Empresa {
 	   * se debe generar una excepción.
 	   * Si el especialista no se especializa en este tipo de servicio se debe generar
 	   * una excepción.
-	   *
-	   *
-	   * Se debe realizar esta operación en O(1).
 	   */
-	   public void cambiarResponsable(int codServicio, int nroEspecialista) {
-		   
+	   public void cambiarResponsable(String tipoDeServicio, int nroEspecialista) {
+		   for (Servicio servicio : servicios){
+				   if (!servicio.getTipoDeServicio().equals(tipoDeServicio)) {
+					   throw new RuntimeException("El tipo de servicio no es valido");
+				   }
+				   for (Especialista especialista : especialistas.values()) {
+					   int nroDeEspecialista = especialista.consultarCodigoEspecialista();
+					   if (nroDeEspecialista != nroEspecialista) {
+						   throw new RuntimeException("El nro de especialista no es valido");
+					   }
+				   }
+		   }
 	   }
 	   
 	   

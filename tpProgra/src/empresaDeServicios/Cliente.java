@@ -1,11 +1,11 @@
 package empresaDeServicios;
 
 public class Cliente {
-	private String nombre;
 	private int dni;
+	private String nombre;
 	private String contacto;
 
-    public Cliente(String nombreCliente, int dni, String contacto) {
+    public Cliente(int dni, String nombreCliente, String contacto) {
         this.nombre = nombreCliente;
         this.dni = dni;
         this.contacto = contacto;
