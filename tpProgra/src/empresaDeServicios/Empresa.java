@@ -15,6 +15,7 @@ public class Empresa {
 		public Empresa() {
 			clientes = new ArrayList<>();
 			servicios = new ArrayList<>();
+			especialistas = new HashMap<Integer, Especialista>();
 			facturacion = 0.0;
 			}
 //REGISTRAR
@@ -89,7 +90,7 @@ public class Empresa {
 		   if (metrosCuadrados <= 0) {
 			   throw new RuntimeException("La cantidad de metros cuadrados de la superficie a pintar no puede ser menor o igual a cero");
 		   }
-		   ServicioDePintura nuevoServicioDePinturaAltura = new ServicioDePintura("Electricidad", domicilioDeServicio, especialista, codigoServicio, metrosCuadrados, precioPorMetroCuadrado);
+		   ServicioDePintura nuevoServicioDePinturaAltura = new ServicioDePintura("Pintura", domicilioDeServicio, especialista, codigoServicio, metrosCuadrados, precioPorMetroCuadrado);
 		   codigoServicio++;
 		   servicios.add(nuevoServicioDePinturaAltura);
 		   return nuevoServicioDePinturaAltura.getCodServicio();  
@@ -130,7 +131,7 @@ public class Empresa {
 		   if (valorSeguro <=0) {
 			   throw new RuntimeException("El valor del seguro no puede ser menor o igual a cero");
 		   }
-		   ServicioDePinturaEnAltura nuevoServicioDePinturaAltura = new ServicioDePinturaEnAltura("Electricidad", domicilioDeServicio, especialista, codigoServicio, metrosCuadrados, precioPorMetroCuadrado, cantPisos, valorSeguro, valorAndamios );
+		   ServicioDePinturaEnAltura nuevoServicioDePinturaAltura = new ServicioDePinturaEnAltura("PinturaEnAltura", domicilioDeServicio, especialista, codigoServicio, metrosCuadrados, precioPorMetroCuadrado, cantPisos, valorSeguro, valorAndamios );
 		   codigoServicio++;
 		   servicios.add(nuevoServicioDePinturaAltura);
 		   return nuevoServicioDePinturaAltura.getCodServicio();  
@@ -163,7 +164,7 @@ public class Empresa {
 		   if (precioPorArtefacto <= 0) {
 			   throw new RuntimeException("El precio por intalar un artefacto no pude ser menor o igual a cero");
 		   }
-		   ServicioDeGasInstalacion nuevoServicioDeGasInstalacion = new ServicioDeGasInstalacion("Electricidad", domicilioDeServicio, especialista, codigoServicio, cantDeArtefactos, precioPorArtefacto );
+		   ServicioDeGasInstalacion nuevoServicioDeGasInstalacion = new ServicioDeGasInstalacion("GasistaInstalacion", domicilioDeServicio, especialista, codigoServicio, cantDeArtefactos, precioPorArtefacto );
 		   codigoServicio++;
 		   servicios.add(nuevoServicioDeGasInstalacion);
 		   return nuevoServicioDeGasInstalacion.getCodServicio();  
@@ -201,7 +202,7 @@ public class Empresa {
 		   if (cantDeArtefactos > 5) {
 			   descuento = 15;
 		   }
-		   ServicioDeGasRevision nuevoServicioDeGasRevision = new ServicioDeGasRevision("Electricidad", domicilioDeServicio, especialista, codigoServicio, cantDeArtefactos, precioPorArtefacto, descuento);
+		   ServicioDeGasRevision nuevoServicioDeGasRevision = new ServicioDeGasRevision("GasistaRevision", domicilioDeServicio, especialista, codigoServicio, cantDeArtefactos, precioPorArtefacto, descuento);
 		   codigoServicio++;
 		   servicios.add(nuevoServicioDeGasRevision);
 		   return nuevoServicioDeGasRevision.getCodServicio();  
