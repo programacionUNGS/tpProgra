@@ -190,12 +190,7 @@ public class Empresa {
  	        return cantidadServiciosPorTipo;
  	    }
 	   
-	   
-	   /**
-	   * Devuelve la suma del precio facturado de todos los servicios finalizados que    
-	   * son del tipo pasado por parámetro.
-	   * Si el tipo de servicio es invalido, debe generar una excepción. /
-	   */
+	  
 	   public double facturacionTotalPorTipo(String tipoServicio) {
 	   		double precioFacturadoDeUnTipoDeServicio = 0;
 	   		for (Servicio servicio : servicios) {
@@ -227,10 +222,9 @@ public class Empresa {
 	   public double facturacionTotal() {
 		   
 	   }
-	   /**
-	   * Debe cambiar el especialista responsable del servicio.
-	   */
-	   public void cambiarResponsable(String codigoServicio, int nroEspecialista) {
+
+	   
+	   public void cambiarResponsable(int codigoServicio, int nroEspecialista) {
 
 		   Servicio servicioGuardado= null;
 		   for (Servicio servicio : servicios){

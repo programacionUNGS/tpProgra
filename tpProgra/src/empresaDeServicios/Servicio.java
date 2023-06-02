@@ -7,7 +7,7 @@ public class Servicio {
 	private int costoServicio;
 	private int costoMateriales;	
 	private int cantHoras;
-	private String codServicio;
+	private int codServicio;
 	
 	public Servicio(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int costoServicio, int costoMateriales, int cantHoras, String codServicio) {
         this.tipoDeServicio = tipoDeServicio;
