@@ -192,7 +192,7 @@ public class Empresa {
 	   
 	   
 	   /**
-	   * Devuelve la suma del precio facturado de todos los servicios finalizados que                ?????????????????????????????????????????????
+	   * Devuelve la suma del precio facturado de todos los servicios finalizados que    
 	   * son del tipo pasado por parámetro.
 	   * Si el tipo de servicio es invalido, debe generar una excepción. /
 	   */
@@ -229,28 +229,40 @@ public class Empresa {
 	   }
 	   /**
 	   * Debe cambiar el especialista responsable del servicio.
-	   * Si código de Servicio o el nroEspecialista no están registrados en el sistema				????????????????????????????????????????????????????????''
-	   * se debe generar una excepción.
-	   * Si el especialista no se especializa en este tipo de servicio se debe generar
-	   * una excepción.
 	   */
 	   public void cambiarResponsable(String codigoServicio, int nroEspecialista) {
+
+		   Servicio servicioGuardado= null;
 		   for (Servicio servicio : servicios){
-			   if (!servicio.getCodServicio().equals(codigoServicio)) {
-				   throw new RuntimeException("El codigo del servicio no es valido");
-			   }
-			   for (Especialista especialista : especialistas.values()) {
-				   int nroDeEspecialista = especialista.consultarCodigoEspecialista();
-				   if (nroDeEspecialista != nroEspecialista) {
-					   throw new RuntimeException("El nro de especialista no es valido");
-				   }
-				   String servicioDeEspecialista = especialista.consultarTipoDeServicio();
-				   if (!servicioDeEspecialista.equals(especialista.consultarTipoDeServicio())) {
-					   throw new RuntimeException("El especialista no se especializa en el servicio requerido");
-				   }
+			   if (servicio.getCodServicio().equals(codigoServicio)) {
+				   servicioGuardado = servicio;
 			   }
 		   }
-	   }
+		   if (servicioGuardado == null) {
+			   throw new RuntimeException("El codigo del servicio no es valido");
+		   }
+
+		   Especialista especialistaGuardado = null; 
+		   for (Especialista especialista : especialistas.values()) {
+			   if (especialista.consultarCodigoEspecialista() == nroEspecialista) {
+				   especialistaGuardado = especialista;
+			   }
+		   }
+		   if (especialistaGuardado == null) {
+			   throw new RuntimeException("El nro de especialista no es valido");
+		   }
+
+		   if (!especialistaGuardado.consultarTipoDeServicio().equals(servicioGuardado.consultarTipoDeServicio())) {
+			   throw new RuntimeException("El especialista no se especializa en el servicio requerido");
+		   }
+		   
+		   servicioGuardado.cambiarEspecialistaResponsable(especialistaGuardado);
+		   
+	   }   
+	   
+	   
+	   
+	   
 	   
 	   
 	   

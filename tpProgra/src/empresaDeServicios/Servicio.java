@@ -94,7 +94,11 @@ public class Servicio {
 		return costoMateriales * cantHoras;
 	}
 	
-	
+	public void cambiarEspecialistaResponsable(Especialista especialistaNuevo) {
+		this.especialista = especialistaNuevo;
+	}
+		
+		
 	public double calcularPrecioDeServicio() { 
 		return (costoServicio * cantHoras) + costoMateriales;
 	}
