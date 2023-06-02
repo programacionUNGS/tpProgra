@@ -228,7 +228,7 @@ public class Empresa {
 
 		   Servicio servicioGuardado= null;
 		   for (Servicio servicio : servicios){
-			   if (servicio.getCodServicio().equals(codigoServicio)) {
+			   if (servicio.getCodServicio() ==codigoServicio) {
 				   servicioGuardado = servicio;
 			   }
 		   }
@@ -254,11 +254,7 @@ public class Empresa {
 		   
 	   }   
 	   
-	   
-	   
-	   
-	   
-	   
+
 	   
 	   
 	   public String listadoServiciosAtendidosPorEspecialista(int nroEspecialista) {

@@ -5,7 +5,7 @@ public class ServicioDePinturaEnAltura extends ServicioDePintura{
 	private double valorAndamios;
 	private double valorSeguro;
 	
-    public ServicioDePinturaEnAltura(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int costoServicio, int cantHoras, String codServicio, int metrosCuadrados, int precioPorMetroCuadrado, int cantPisos,double valorSeguro,double valorAndamios) {
+    public ServicioDePinturaEnAltura(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int costoServicio, int cantHoras, int codServicio, int metrosCuadrados, int precioPorMetroCuadrado, int cantPisos,double valorSeguro,double valorAndamios) {
         
     	super(tipoDeServicio, domicilioDeServicio, especialista, costoServicio, cantHoras, codServicio, metrosCuadrados, precioPorMetroCuadrado);
 

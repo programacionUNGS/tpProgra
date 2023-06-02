@@ -4,7 +4,7 @@ public class ServicioDeGas extends Servicio {
     private int cantDeArtefactos;
     private int precioPorArtefacto;
     
-    public ServicioDeGas(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int costoServicio, int costoMateriales, int cantHoras, String codServicio, int cantDeArtefactos, int precioPorArtefacto) {
+    public ServicioDeGas(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int costoServicio, int costoMateriales, int cantHoras, int codServicio, int cantDeArtefactos, int precioPorArtefacto) {
         super(tipoDeServicio, domicilioDeServicio, especialista, costoServicio, costoMateriales, cantHoras, codServicio);
 
         this.cantDeArtefactos = cantDeArtefactos;

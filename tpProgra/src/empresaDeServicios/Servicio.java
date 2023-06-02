@@ -9,7 +9,7 @@ public class Servicio {
 	private int cantHoras;
 	private int codServicio;
 	
-	public Servicio(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int costoServicio, int costoMateriales, int cantHoras, String codServicio) {
+	public Servicio(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int costoServicio, int costoMateriales, int cantHoras, int codServicio) {
         this.tipoDeServicio = tipoDeServicio;
         this.domicilioDeServicio = domicilioDeServicio;
         this.especialista = especialista;
@@ -63,11 +63,11 @@ public class Servicio {
 	public void setCantHoras(int cantHoras) {
 		this.cantHoras = cantHoras;
 	}
-	public String getCodServicio() {
+	public int getCodServicio() {
 		return codServicio;
 	}
 	
-	public void setCodServicio(String codServicio) {
+	public void setCodServicio(int codServicio) {
 		this.codServicio = codServicio;
 	}
 
