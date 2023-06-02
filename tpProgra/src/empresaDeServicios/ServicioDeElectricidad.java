@@ -4,9 +4,9 @@ public class ServicioDeElectricidad extends Servicio{
 	private double valorHora;
 	private int horasTrabajo;
 	
-	public ServicioDeElectricidad(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, double costoServicio, double valorHora, int horasTrabajo) {
+	public ServicioDeElectricidad(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int costoServicio, int costoMateriales, int cantHoras, int codServicio, double valorHora, int horasTrabajo) {
 		
-		super(tipoDeServicio, domicilioDeServicio, especialista, costoServicio);
+		super(tipoDeServicio, domicilioDeServicio, especialista, costoServicio, costoMateriales, cantHoras, codServicio);
 		
 		this.setValorHora(valorHora);
 		this.setHorasTrabajo(horasTrabajo);

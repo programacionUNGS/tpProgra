@@ -156,20 +156,6 @@ public class Empresa {
 	   
 	   
 	   
-	   
-	   /* Se registra que el servicio solicitado ya fué concluido. Para esto se debe
-	   * ingresar el costo de los materiales utilizados para poder realizar el
-	   * trabajo.
-	   *
-	   * Se devuelve el precio que se debe facturar al cliente.
-	   * Este precio se obtiene sumando el costo de los materiales con el costo del
-	   * servicio realizado. Cada tipo de servicio tiene su forma de calcular el
-	   * costo del trabajo.
-	   *
-	   * Si el código de servicio no está en el sistema o el mismo ya fué finalizado,
-	   * se debe generar una excepción.
-	   
-	   */
 	   public double finalizarServicio(int codServicio, int costoMateriales) {
 		   Servicio servicioGuardado= null;
 		   for (Servicio servicio : servicios){
@@ -180,8 +166,10 @@ public class Empresa {
 		   if (servicioGuardado == null) {
 			   throw new RuntimeException("El codigo del servicio no es valido");
 		   }
+		   double montoDeFinalizarServicio = costoMateriales + servicioGuardado.calcularPrecioDeServicio();
+		   facturacion += montoDeFinalizarServicio;
 		   
-		   return costoMateriales + servicioGuardado.calcularPrecioDeServicio();  
+		   return  montoDeFinalizarServicio; 
 	   }
 	  
 	   
@@ -225,12 +213,8 @@ public class Empresa {
 	   	
 	   
 	   
-	   /**
-	   * Devuelve la suma del precio facturado de todos los servicios finalizados que
-	   * realizó la empresa.
-	   */
 	   public double facturacionTotal() {
-		   
+		   return facturacion;
 	   }
 
 	   
