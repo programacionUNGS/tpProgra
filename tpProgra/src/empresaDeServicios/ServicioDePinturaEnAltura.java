@@ -43,11 +43,9 @@ public class ServicioDePinturaEnAltura extends ServicioDePintura{
 //_________________________________________________________________________________________________________________________________________________________________________	
 
 	@Override
-	public double calcularPrecioDeServicio(int cantPisos, double precioPorMetroCuadrado, int metrosCuadrados, double valorAndamios, double valorSeguro) {
-		if (cantPisos > 1) {
-			return ((precioPorMetroCuadrado * metrosCuadrados) + valorAndamios + valorSeguro);
+	public double calcularPrecioDeServicio() {
+		return super.calcularPrecioDeServicio() + valorAndamios + valorSeguro;
 			
-		}
 	}
 		
 	

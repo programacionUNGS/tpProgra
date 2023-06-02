@@ -10,10 +10,7 @@ public class ServicioDeGasInstalacion extends ServicioDeGas{
 
 //_________________________________________________________________________________________________________________________________________________________________________	
 
-  @Override  
-  public int calcularPrecioDeServicio(int cantDeArtefactos, int precioPorArtefacto) {
-	  return precioPorArtefacto * cantDeArtefactos;
-  }
+
 
     
 }

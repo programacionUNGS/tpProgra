@@ -170,8 +170,18 @@ public class Empresa {
 	   * se debe generar una excepción.
 	   
 	   */
-	   public double finalizarServicio(int costoMateriales, int costoServicio) {
+	   public double finalizarServicio(int codServicio, int costoMateriales) {
+		   Servicio servicioGuardado= null;
+		   for (Servicio servicio : servicios){
+			   if (servicio.getCodServicio() == codServicio) {
+				   servicioGuardado = servicio;
+			   }
+		   }
+		   if (servicioGuardado == null) {
+			   throw new RuntimeException("El codigo del servicio no es valido");
+		   }
 		   
+		   return costoMateriales + servicioGuardado.calcularPrecioDeServicio();  
 	   }
 	  
 	   

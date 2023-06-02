@@ -30,6 +30,9 @@ public class ServicioDeGas extends Servicio {
 
 //_________________________________________________________________________________________________________________________________________________________________________	
 
-	
+	@Override  
+	public double calcularPrecioDeServicio() {
+		return super.calcularPrecioDeServicio() + (precioPorArtefacto * cantDeArtefactos);
+	}
 	
 }

@@ -21,10 +21,8 @@ public class ServicioDeGasRevision extends ServicioDeGas {
 //_________________________________________________________________________________________________________________________________________________________________________	
 
 	@Override
-	public double calcularPrecioDeServicio(int cantDeArtefactos, int precioPorArtefacto, double decuento) {
-		if (cantDeArtefactos >= 5) {
-			return (precioPorArtefacto * cantDeArtefactos) - descuento;
-		}
+	public double calcularPrecioDeServicio() {
+		return super.calcularPrecioDeServicio() - descuento;
 	}
 
 }

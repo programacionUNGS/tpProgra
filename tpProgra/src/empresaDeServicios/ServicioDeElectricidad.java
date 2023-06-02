@@ -31,9 +31,8 @@ public class ServicioDeElectricidad extends Servicio{
 //_________________________________________________________________________________________________________________________________________________________________________	
 
 	@Override
-	public double calcularPrecioDeServicio(double valorHora, int horasTrabajo) {
-		double precio = valorHora * horasTrabajo;
-		return precio;
+	public double calcularPrecioDeServicio() {
+		return super.calcularPrecioDeServicio() + (valorHora * horasTrabajo);
 	}
 	
 }

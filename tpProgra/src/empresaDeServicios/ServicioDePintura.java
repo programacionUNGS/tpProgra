@@ -42,8 +42,8 @@ public class ServicioDePintura extends Servicio {
 //_________________________________________________________________________________________________________________________________________________________________________	
 
 	@Override
-	public double calcularPrecioDeServicio(int metrosCuadrados, double precioPorMetroCuadrado) {
-	  return metrosCuadrados * precioPorMetroCuadrado;
+	public double calcularPrecioDeServicio() {
+	  return super.calcularPrecioDeServicio() + (metrosCuadrados * precioPorMetroCuadrado);
 	}
     
     

@@ -100,7 +100,7 @@ public class Servicio {
 		
 		
 	public double calcularPrecioDeServicio() { 
-		return (costoServicio * cantHoras) + costoMateriales;
+		return costoServicio * cantHoras;
 	}
 	
 }
