@@ -4,12 +4,12 @@ public class ServicioDeElectricidad extends Servicio{
 	private double valorHora;
 	private int horasTrabajo;
 	
-	public ServicioDeElectricidad(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int costoServicio, int costoMateriales, int cantHoras, int codServicio, double valorHora, int horasTrabajo) {
+	public ServicioDeElectricidad(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int horasTrabajo, int codServicio, double valorHora) {
 		
-		super(tipoDeServicio, domicilioDeServicio, especialista, costoServicio, costoMateriales, cantHoras, codServicio);
+		super(tipoDeServicio, domicilioDeServicio, especialista, codServicio);
 		
-		this.setValorHora(valorHora);
-		this.setHorasTrabajo(horasTrabajo);
+		this.valorHora = valorHora;
+		this.horasTrabajo = horasTrabajo;
 	}
 
 	public int getHorasTrabajo() {

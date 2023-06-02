@@ -11,7 +11,7 @@ public class Empresa {
 	private Map<Integer, Especialista> especialistas;
 	private List<Cliente> clientes;
 	private ArrayList<Servicio> servicios;
-	
+	private int codigoServicio = 0;
 		public Empresa() {
 			clientes = new ArrayList<>();
 			servicios = new ArrayList<>();
@@ -24,11 +24,6 @@ public class Empresa {
 	        clientes.add(cliente);
 	    }
 	   
-	   public void registrarServicio(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, double costoServicio) {
-		   Servicio servicio = new Servicio(tipoDeServicio, domicilioDeServicio, especialista, costoServicio);
-		   servicios.add(servicio);
-	   }
-	   
 	   public void registrarEspecialista(int codigoEspecialista, String nombreEspecialista, String telefono, String servicioEspecializado) { 
 	        Especialista especialista = new Especialista(codigoEspecialista, nombreEspecialista, telefono, servicioEspecializado);
 	        especialistas.put(codigoEspecialista, especialista);
@@ -37,13 +32,20 @@ public class Empresa {
 //EXCEPCIONES DE LOS SOLICITAR DE CADA SERVICIO
 	   
 	   public int solicitarServicioElectricidad(int dni, int codigoEspecialista, String domicilioDeServicio, double valorHora, int horasTrabajo) {
-		   if (!clientes.equals(dni)){
+		   Cliente clienteRegistrado = null;
+		   for (Cliente cliente: clientes){
+			   if (cliente.dni() == dni) {
+				   clienteRegistrado = cliente;
+			   }
+		   }
+		   if (clienteRegistrado == null){
 			   throw new RuntimeException("El dni ingresado no corresponde a un cliente registrado");
 		   }
 		   if (!especialistas.containsKey(codigoEspecialista)) {
 			   throw new RuntimeException("El codigo del especialista es invalido");
 		   }
-		   if (!especialistas.get(codigoEspecialista).consultarTipoDeServicio.equals("ServicioDeElectricidad")){ //////?????????
+		   Especialista especialista = especialistas.get(codigoEspecialista);
+		   if (!especialista.consultarTipoDeServicio().equals("ServicioDeElectricidad")){ 
 			   throw new RuntimeException("El esepcialista no se esta especializado en este tipo de servicio");
 		   }
 		   if (domicilioDeServicio == null) {
@@ -55,17 +57,27 @@ public class Empresa {
 		   if (horasTrabajo <= 0) {
 			   throw new RuntimeException("La cantidad de horas trabajadas no puede ser menor o igual a cero");
 		   }
+		   ServicioDeElectricidad nuevoServicioDeElectricidad = new ServicioDeElectricidad("Electricidad", domicilioDeServicio, especialista, horasTrabajo, codigoServicio, valorHora);
+		   codigoServicio++;
+		   servicios.add(nuevoServicioDeElectricidad);
+		   return nuevoServicioDeElectricidad.getCodServicio();  
 	   }
 	   
-	   
 	   public int solicitarServicioPintura(int dni, int codigoEspecialista, String domicilioDeServicio, int metrosCuadrados, double precioPorMetroCuadrado) {
-		   if (!clientes.equals(dni)){
+		   Cliente clienteRegistrado = null;
+		   for (Cliente cliente: clientes){
+			   if (cliente.dni() == dni) {
+				   clienteRegistrado = cliente;
+			   }
+		   }
+		   if (clienteRegistrado == null){
 			   throw new RuntimeException("El dni ingresado no corresponde a un cliente registrado");
 		   }
 		   if (!especialistas.containsKey(codigoEspecialista)) {
 			   throw new RuntimeException("El codigo del especialista es invalido");
 		   }
-		   if (!especialistas.get(codigoEspecialista).consultarTipoDeServicio.equals("ServicioDeElectricidad")){ //////?????????
+		   Especialista especialista = especialistas.get(codigoEspecialista);
+		   if (!especialista.consultarTipoDeServicio().equals("ServicioDeElectricidad")){ 
 			   throw new RuntimeException("El esepcialista no se esta especializado en este tipo de servicio");
 		   }
 		   if (domicilioDeServicio == null) {
@@ -77,17 +89,27 @@ public class Empresa {
 		   if (metrosCuadrados <= 0) {
 			   throw new RuntimeException("La cantidad de metros cuadrados de la superficie a pintar no puede ser menor o igual a cero");
 		   }
+		   ServicioDePintura nuevoServicioDePinturaAltura = new ServicioDePintura("Electricidad", domicilioDeServicio, especialista, codigoServicio, metrosCuadrados, precioPorMetroCuadrado);
+		   codigoServicio++;
+		   servicios.add(nuevoServicioDePinturaAltura);
+		   return nuevoServicioDePinturaAltura.getCodServicio();  
 	   }
 	   
-	   
 	   public int solicitarServicioPintura(int dni, int codigoEspecialista, String domicilioDeServicio, int metrosCuadrados, double precioPorMetroCuadrado, int cantPisos, double valorAndamios, double valorSeguro) {
-		   if (!clientes.equals(dni)){
+		   Cliente clienteRegistrado = null;
+		   for (Cliente cliente: clientes){
+			   if (cliente.dni() == dni) {
+				   clienteRegistrado = cliente;
+			   }
+		   }
+		   if (clienteRegistrado == null){
 			   throw new RuntimeException("El dni ingresado no corresponde a un cliente registrado");
 		   }
 		   if (!especialistas.containsKey(codigoEspecialista)) {
 			   throw new RuntimeException("El codigo del especialista es invalido");
 		   }
-		   if (!especialistas.get(codigoEspecialista).consultarTipoDeServicio.equals("ServicioDeElectricidad")){ //////?????????
+		   Especialista especialista = especialistas.get(codigoEspecialista);
+		   if (!especialista.consultarTipoDeServicio().equals("ServicioDeElectricidad")){ 
 			   throw new RuntimeException("El esepcialista no se esta especializado en este tipo de servicio");
 		   }
 		   if (domicilioDeServicio == null) {
@@ -108,17 +130,28 @@ public class Empresa {
 		   if (valorSeguro <=0) {
 			   throw new RuntimeException("El valor del seguro no puede ser menor o igual a cero");
 		   }
+		   ServicioDePinturaEnAltura nuevoServicioDePinturaAltura = new ServicioDePinturaEnAltura("Electricidad", domicilioDeServicio, especialista, codigoServicio, metrosCuadrados, precioPorMetroCuadrado, cantPisos, valorSeguro, valorAndamios );
+		   codigoServicio++;
+		   servicios.add(nuevoServicioDePinturaAltura);
+		   return nuevoServicioDePinturaAltura.getCodServicio();  
 	   }
 	   
 	   
 	   public int solicitarServicioGasistaInstalacion(int dni, int codigoEspecialista, String domicilioDeServicio, int cantDeArtefactos, int precioPorArtefacto) {
-		   if (!clientes.equals(dni)){
+		   Cliente clienteRegistrado = null;
+		   for (Cliente cliente: clientes){
+			   if (cliente.dni() == dni) {
+				   clienteRegistrado = cliente;
+			   }
+		   }
+		   if (clienteRegistrado == null){
 			   throw new RuntimeException("El dni ingresado no corresponde a un cliente registrado");
 		   }
 		   if (!especialistas.containsKey(codigoEspecialista)) {
 			   throw new RuntimeException("El codigo del especialista es invalido");
 		   }
-		   if (!especialistas.get(codigoEspecialista).consultarTipoDeServicio.equals("ServicioDeElectricidad")){ //////?????????
+		   Especialista especialista = especialistas.get(codigoEspecialista);
+		   if (!especialista.consultarTipoDeServicio().equals("ServicioDeElectricidad")){ 
 			   throw new RuntimeException("El esepcialista no se esta especializado en este tipo de servicio");
 		   }
 		   if (domicilioDeServicio == null) {
@@ -130,17 +163,29 @@ public class Empresa {
 		   if (precioPorArtefacto <= 0) {
 			   throw new RuntimeException("El precio por intalar un artefacto no pude ser menor o igual a cero");
 		   }
+		   ServicioDeGasInstalacion nuevoServicioDeGasInstalacion = new ServicioDeGasInstalacion("Electricidad", domicilioDeServicio, especialista, codigoServicio, cantDeArtefactos, precioPorArtefacto );
+		   codigoServicio++;
+		   servicios.add(nuevoServicioDeGasInstalacion);
+		   return nuevoServicioDeGasInstalacion.getCodServicio();  
+		   
 	   }
 	   
 	   
 	   public int solicitarServicioGasistaRevision(int dni, int codigoEspecialista, String domicilioDeServicio, int cantDeArtefactos, int precioPorArtefacto) {
-		   if (!clientes.equals(dni)){
+		   Cliente clienteRegistrado = null;
+		   for (Cliente cliente: clientes){
+			   if (cliente.dni() == dni) {
+				   clienteRegistrado = cliente;
+			   }
+		   }
+		   if (clienteRegistrado == null){
 			   throw new RuntimeException("El dni ingresado no corresponde a un cliente registrado");
 		   }
 		   if (!especialistas.containsKey(codigoEspecialista)) {
 			   throw new RuntimeException("El codigo del especialista es invalido");
 		   }
-		   if (!especialistas.get(codigoEspecialista).consultarTipoDeServicio.equals("ServicioDeElectricidad")){ //////?????????
+		   Especialista especialista = especialistas.get(codigoEspecialista);
+		   if (!especialista.consultarTipoDeServicio().equals("ServicioDeElectricidad")){ 
 			   throw new RuntimeException("El esepcialista no se esta especializado en este tipo de servicio");
 		   }
 		   if (domicilioDeServicio == null) {
@@ -152,6 +197,14 @@ public class Empresa {
 		   if (precioPorArtefacto <= 0) {
 			   throw new RuntimeException("El precio por intalar un artefacto no pude ser menor o igual a cero");
 		   }
+		   int descuento = 10;
+		   if (cantDeArtefactos > 5) {
+			   descuento = 15;
+		   }
+		   ServicioDeGasRevision nuevoServicioDeGasRevision = new ServicioDeGasRevision("Electricidad", domicilioDeServicio, especialista, codigoServicio, cantDeArtefactos, precioPorArtefacto, descuento);
+		   codigoServicio++;
+		   servicios.add(nuevoServicioDeGasRevision);
+		   return nuevoServicioDeGasRevision.getCodServicio();  
 	   }
 	   
 	   
@@ -174,7 +227,7 @@ public class Empresa {
 	  
 	   
 	   
-	   public static HashMap<String, Integer> cantidadDeServiciosRealizadosPorTipo(HashMap<String, Especialista> especialistas) {
+	   public HashMap<String, Integer> cantidadDeServiciosRealizadosPorTipo() {
  	        HashMap<String, Integer> cantidadServiciosPorTipo = new HashMap<>();
  	        for (Especialista especialista : especialistas.values()) {
  	            String tipoServicio = especialista.consultarTipoDeServicio();

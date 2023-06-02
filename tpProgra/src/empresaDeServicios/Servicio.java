@@ -6,14 +6,13 @@ public class Servicio {
 	private Especialista especialista;
 	private int costoServicio;
 	private int costoMateriales;	
-	private int cantHoras;
 	private int codServicio;
 	
-	public Servicio(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int costoServicio, int costoMateriales, int cantHoras, int codServicio) {
+	public Servicio(String tipoDeServicio, String domicilioDeServicio, Especialista especialista, int codServicio) {
         this.tipoDeServicio = tipoDeServicio;
         this.domicilioDeServicio = domicilioDeServicio;
         this.especialista = especialista;
-        this.costoServicio = costoServicio;
+        this.codServicio = codServicio;
     }
 	
     public String getTipoDeServicio() {
@@ -56,13 +55,6 @@ public class Servicio {
 		this.costoMateriales = costoMateriales;
 	}
 	
-	public int getCantHoras() {
-		return cantHoras;
-	}
-	
-	public void setCantHoras(int cantHoras) {
-		this.cantHoras = cantHoras;
-	}
 	public int getCodServicio() {
 		return codServicio;
 	}
@@ -88,10 +80,9 @@ public class Servicio {
 	}
 	
 	
-	public double finalizarServicio(int costoMateriales, int cantHoras) {
+	public double finalizarServicio(int costoMateriales) {
 		this.costoMateriales = costoMateriales;
-		this.cantHoras = cantHoras;
-		return costoMateriales * cantHoras;
+		return costoMateriales + costoServicio;
 	}
 	
 	public void cambiarEspecialistaResponsable(Especialista especialistaNuevo) {
@@ -100,7 +91,7 @@ public class Servicio {
 		
 		
 	public double calcularPrecioDeServicio() { 
-		return costoServicio * cantHoras;
+		return costoServicio + costoMateriales;
 	}
 	
 }
