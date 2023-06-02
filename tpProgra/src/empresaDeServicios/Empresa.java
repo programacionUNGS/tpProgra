@@ -46,7 +46,7 @@ public class Empresa {
 			   throw new RuntimeException("El codigo del especialista es invalido");
 		   }
 		   Especialista especialista = especialistas.get(codigoEspecialista);
-		   if (!especialista.consultarTipoDeServicio().equals("ServicioDeElectricidad")){ 
+		   if (!especialista.consultarTipoDeServicio().equals("Electricidad")){ 
 			   throw new RuntimeException("El esepcialista no se esta especializado en este tipo de servicio");
 		   }
 		   if (domicilioDeServicio == null) {
@@ -78,7 +78,7 @@ public class Empresa {
 			   throw new RuntimeException("El codigo del especialista es invalido");
 		   }
 		   Especialista especialista = especialistas.get(codigoEspecialista);
-		   if (!especialista.consultarTipoDeServicio().equals("ServicioDeElectricidad")){ 
+		   if (!especialista.consultarTipoDeServicio().equals("Pintura")){ 
 			   throw new RuntimeException("El esepcialista no se esta especializado en este tipo de servicio");
 		   }
 		   if (domicilioDeServicio == null) {
@@ -110,7 +110,7 @@ public class Empresa {
 			   throw new RuntimeException("El codigo del especialista es invalido");
 		   }
 		   Especialista especialista = especialistas.get(codigoEspecialista);
-		   if (!especialista.consultarTipoDeServicio().equals("ServicioDeElectricidad")){ 
+		   if (!especialista.consultarTipoDeServicio().equals("PinturaEnAltura")){ 
 			   throw new RuntimeException("El esepcialista no se esta especializado en este tipo de servicio");
 		   }
 		   if (domicilioDeServicio == null) {
@@ -152,7 +152,7 @@ public class Empresa {
 			   throw new RuntimeException("El codigo del especialista es invalido");
 		   }
 		   Especialista especialista = especialistas.get(codigoEspecialista);
-		   if (!especialista.consultarTipoDeServicio().equals("ServicioDeElectricidad")){ 
+		   if (!especialista.consultarTipoDeServicio().equals("GasistaInstalacion")){ 
 			   throw new RuntimeException("El esepcialista no se esta especializado en este tipo de servicio");
 		   }
 		   if (domicilioDeServicio == null) {
@@ -186,7 +186,7 @@ public class Empresa {
 			   throw new RuntimeException("El codigo del especialista es invalido");
 		   }
 		   Especialista especialista = especialistas.get(codigoEspecialista);
-		   if (!especialista.consultarTipoDeServicio().equals("ServicioDeElectricidad")){ 
+		   if (!especialista.consultarTipoDeServicio().equals("GasistaRevision")){ 
 			   throw new RuntimeException("El esepcialista no se esta especializado en este tipo de servicio");
 		   }
 		   if (domicilioDeServicio == null) {
